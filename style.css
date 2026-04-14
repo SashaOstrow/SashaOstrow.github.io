@@ -1,0 +1,724 @@
+/* ========================================
+   CSS Custom Properties (Base Theme)
+   ======================================== */
+:root {
+    --color-background: #eae6dd;
+    --color-text-primary: #333333;
+    --color-text-secondary: #777777;
+    --color-primary:rgba(24, 89, 76);
+    --color-border: #f0f0f0;
+
+    --font-family-sans-serif: "Roboto", system-ui, -apple-system, sans-serif;
+    --font-weight-medium: 500;
+
+    --navbar-height: 70px;
+    --navbar-padding: 1.5rem;
+    --container-width: 1140px;
+    --border-radius: 6px;
+    --transition-speed: 0.3s;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+/* ========================================
+   Global Resets & Base Styles
+   ======================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+body { margin: 0; font-family: var(--font-family-sans-serif); background-color: #f9f9f9; }
+.content { max-width: 100%; margin: 0 auto; padding: 1rem var(--navbar-padding); line-height: 1.7; }
+.content h1 { padding-top: var(--navbar-height); margin-top: 0; }
+ul { list-style: none; margin: 0; padding: 0; }
+a { text-decoration: none; color: var(--color-text-secondary); transition: color var(--transition-speed) ease, transform 0.3s ease; /* add transform transition */
+    display: inline-block; /* IMPORTANT for movement */ }
+a:hover, a:focus { color: var(--color-primary);transform: translateY(-3px); /* small upward movement */ }
+
+/* ========================================
+   Main Navbar Structure & Animation
+   ======================================== */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: var(--navbar-height);
+    display: flex; align-items: center;
+    background-color: var(--color-background);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transform: translateY(0);
+    transition: transform var(--transition-speed) ease-in-out;
+}
+.navbar.is-hidden { transform: translateY(-100%); }
+
+.navbar__container { display: flex; justify-content: space-between; align-items: center; width: 100%; max-width: var(--container-width); margin: 0 auto; padding: 0 var(--navbar-padding); }
+.navbar__brand { font-size: 1.5rem; font-weight: var(--font-weight-medium); color: var(--color-text-primary); }
+
+/* Mobile Menu & Toggle */
+.navbar__toggle { display: block; border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 0.25rem 0.75rem; background: transparent; cursor: pointer; }
+.navbar__toggle .bar { display: block; width: 22px; height: 2px; margin: 6px 0; background-color: var(--color-text-primary); transition: transform var(--transition-speed) ease; }
+.navbar__toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.navbar__toggle.is-active .bar:nth-child(2) { opacity: 0; }
+.navbar__toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.navbar__menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--color-background); border-bottom: 1px solid var(--color-border); z-index: 999; }
+.navbar__menu.is-active { display: flex; }
+.navbar__item { text-align: center; border-top: 1px solid var(--color-border); }
+.navbar__link { display: block; padding: 1.25rem; font-weight: var(--font-weight-medium); }
+
+:is(.navbar__toggle, .navbar__link):focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: var(--border-radius); }
+
+/* Desktop Navbar Styles */
+@media (min-width: 768px) {
+    .navbar__toggle { display: none; }
+    .navbar__menu { display: flex; flex-direction: row; align-items: center; position: static; width: auto; background: none; border: none; }
+    .navbar__list { display: flex; align-items: center; gap: 1.5rem; }
+    .navbar__item { border: none; }
+    .navbar__link { font-weight: var(--font-weight-medium); padding: 0.5rem 0; }
+}
+
+/* Accessibility: Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .navbar { transition: none; }
+}
+
+/*about page*/
+
+main {
+    padding: 150px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.h1 {
+    color: rgba(24, 89, 76);
+    font-size: 70px;
+    font-family: Georgia;
+    text-align: center;
+}
+
+.h2 {
+    color: #f8d515;
+    font-family: 'Montserrat', sans-serif; 
+    padding: 20px 50px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.h3 {
+    color: #a8aba8;
+    font-family: 'Montserrat', sans-serif; 
+    padding: 20px 50px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.h4 {
+    
+    color: #f8d515;
+    font-family: 'Montserrat', sans-serif; 
+    padding: 10px 20px;
+    font-size: 20px;
+    text-align: left;
+
+      max-width: 900px;
+  margin: 0 auto;
+  
+}
+
+
+.h1-side {
+    color: rgba(24, 89, 76);
+    padding: 20px 10px;
+    font-size: 70px;
+    font-family: Georgia;
+    text-align: left;
+}
+
+.h2-side {
+    color: #f8d515;
+    font-family: 'Montserrat', sans-serif; 
+    padding: 20px 10px;
+    font-size: 20px;
+    text-align: left;
+    max-width: 600px; 
+}
+
+/*button 1*/
+.b1 {
+    color: #eae6dd;
+    padding: 20px 100px;
+    background-color: rgba(24, 89, 76);
+    border: none;
+    border-radius: 999px; /* perfect pill */
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 15px;
+     
+    /* smooth animation */
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hover effect */
+.b1:hover {
+    font-weight: bold;
+    transform: translateY(-8px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2); /* adds depth */
+    transform: scale(1.1);
+    background-color: #eae6dd;
+    color: rgba(24, 89, 76);
+}
+
+.b1:active {
+    transform: translateY(-2px) scale(0.98);
+}
+/*button 2*/
+.b2 {
+    color: #eae6dd;
+    margin-top: 70px;
+    padding: 20px 100px;
+    background-color: rgba(24, 89, 76);
+    border: none;
+    border-radius: 999px; /* perfect pill */
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 15px;
+     
+    /* smooth animation */
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hover effect */
+.b2:hover {
+    font-weight: bold;
+    transform: translateY(-8px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2); /* adds depth */
+    transform: scale(1.1);
+    background-color: rgb(40, 114, 99);
+    color: #eae6dd;
+}
+
+.b2:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+/*************/
+.social-buttons {
+    display: flex;
+    gap: 15px;
+    padding: 20px 10px;
+    
+}
+
+/* Circle button */
+.icon-button {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(24, 89, 76);
+    color: #eae6dd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* makes it a perfect circle */
+    text-decoration: none;
+    font-size: 20px;
+    transition: 0.3s ease;
+}
+
+/* Hover effect */
+.icon-button:hover {
+    transform: scale(1.1);
+    background-color: #eae6dd;
+}
+
+.b1:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+
+body {
+    background-color: #1a1d23;
+}
+
+.body2 {
+    background-color: #273044;
+}
+
+img {
+    width: 300px;   /* change size here */
+    height: auto;   /* keeps proportions */
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px; /* rounded corners */
+}
+
+.hero {
+    display: flex;
+    align-items: center;      /* vertically align */
+    justify-content: space-between;
+    padding: 50px;
+    gap: 40px;
+    padding-right: 200px;  
+}
+
+/* LEFT SIDE (text) */
+.text-side {
+    flex: 1 1 280px;
+    min-width: 0;
+}
+
+/* Right side (image) */
+.hero-image {
+    width: 700px;         /* width of the "frame" */
+    height: 500px;        /* height of the "frame" */
+    overflow: hidden;     /* hides the parts outside the frame */
+    border-radius: 20px;  /* optional rounded corners */
+    display: block; 
+    margin: 0 auto;
+    max-width: 400px;
+
+}
+
+.hero-image img {
+    width: 110%;          /* make image fill the frame horizontally */
+    height: 110%;         /* make image fill the frame vertically */
+    object-fit: cover;    /* this crops the image nicely */
+    object-position: center; 
+}
+
+.navbar-logo {
+    height: 40px;   /* smaller height to fit navbar */
+    width: auto;    /* keeps the correct aspect ratio */
+    display: block;
+}
+
+/* style for work page*/
+.cards-container {
+    display: flex;                 /* makes children line up in a row */
+    justify-content: center;       /* center the row horizontally */
+    align-items: flex-start;       /* top alignment */
+    gap: 100px;                     /* space between cards */
+    padding: 40px;
+    flex-wrap: wrap;               /* wrap cards on small screens */
+}
+
+.card {
+    flex: 0 1 300px;               /* each card ~300px wide, can shrink if needed */
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 110%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 0;
+}
+
+/**** footer *****/
+
+.footer {
+   
+    background: linear-gradient(to top, #14313d 0%, #1a1d23 30%, #1a1d23 60%);
+}
+/*dino info*/
+.dino-image img{
+    display:flex;
+    justify-content: center;
+    width:100px;
+    height:120px;   /* keeps proportions */
+    transform-origin: bottom;
+}
+
+.dino-image img:hover {
+    animation: jump 0.6s ease infinite;
+}
+
+/* Keyframes = the jumps */
+@keyframes jump {
+    0%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-12px); }
+    60% { transform: translateY(-6px); }
+}
+
+/* Container */
+.dino-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Hidden text bubble */
+.dino-text {
+    position: absolute;
+    bottom: 100%;  /* above the dino */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    background: #eae6dd;
+    padding: 8px 14px;
+    border-radius: 15px;
+    
+    font-size: 14px;
+    color: #333;
+
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0; /* start hidden */
+
+    opacity: 0;
+}
+
+/* Typing animation */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 60px; } /* adjust based on text length */
+}
+
+/* Show + animate on hover */
+.dino-container:hover .dino-text {
+    opacity: 1;
+    animation: typing 0.8s steps(6) forwards;
+}
+
+/* Main footer layout */
+.footer__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+}
+
+/* LEFT SIDE (stacked) */
+.footer-left {
+    display: flex;
+    flex-direction: column; /* stack text */
+    gap: 10px;
+}
+
+/* RIGHT SIDE (stacked) */
+.footer-right {
+    display: flex;
+    flex-direction: column; /* stack sections vertically */
+    gap: 15px;
+    align-items: flex-end; /* optional: push everything to the right */
+}
+
+.footer-actions {
+    display: flex;
+    flex-direction: row; /* side by side */
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-row {
+    display: flex;
+    align-items: center;  /* vertically centers buttons and dino */
+    gap: 10px;            /* space between elements */
+}
+
+
+.footer-text {
+    font-size: 14px;
+    color: #304645;
+            /* space above text */
+    align-self: flex-start; 
+}
+
+.bubble-container {
+    position: relative;
+    width: 300px;
+}
+
+/* Image */
+.bubble-container img {
+    width: 100%;
+    display: block;
+}
+
+/* Text on top */
+.bubble-text {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* perfect center */
+    font-size: 18px;
+
+    text-align: center;
+    width: 70%; /* keeps text inside bubble nicely */
+    color: #f8d515;
+}
+
+/***Creation for Cures***/
+
+.image-row {
+    padding: 10px 14px;
+    flex-wrap: wrap;
+    display: flex;           /* makes children line up in a row */
+    gap: 10px;               /* space between images */
+    justify-content: center; /* optional: center the row */
+    align-items: center;     /* optional: vertically align if images have different heights */
+  
+}
+
+.image-row img {
+    max-width: 500px;
+    width: 100%;
+    height: auto;  /* maintain aspect ratio */
+    border-radius: 10px; /* optional rounded corners */
+    margin: 0;
+    padding: 0 10px;
+    object-fit: contain;
+    display: block;
+}
+
+.center {
+    align-items: center !important;
+    text-align: center  !important; 
+
+}
+
+/* RIGHT SIDE (image) */
+.image-side {
+    padding: 50px 14px;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* pushes image to the right */
+}
+
+/* Image styling */
+.image-side img {
+    width: 400px;
+    height: auto;
+    border-radius: 0px;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/***Image page***/
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-auto-rows: 200px; /* base row height */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* All images */
+.gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* crops nicely */
+    border-radius: 10px;
+}
+
+.clickable-img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.clickable-img:hover {
+    transform: scale(1.05);
+}
+
+/* Lightbox background */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+}
+
+/* Centered image */
+.lightbox-content {
+    display: block;
+    margin: auto;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    margin-top: 15%;
+    border-radius: 10px;
+}
+
+#lightbox-img {
+    margin-top: 50px;
+    width: 1000px;
+    max-width: 50vw;
+    max-height: 50vh;
+    margin: auto;
+    border-radius: 10px;
+}
+
+/* Close button */
+.close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 40px;
+    color: #f8d515;
+    cursor: pointer;
+}
+
+/* Different sizes */
+.tall {
+    grid-row: span 2;
+}
+
+.wide {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.big {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.normal {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+video {
+    width: 100%;   /* change this to any size */
+    height: auto;   /* keeps proportions */
+    padding: 10px;
+}
+
+/* Each video + text stack */
+.video-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* stacks video + text */
+    align-items: center;
+    min-width: 300px;
+    max-width: 700px;
+    width: 100%;
+}
+
+
+/* Text under video */
+.video-card .h2 {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.padding {
+    padding: 50px 14px;
+    margin-top: 30px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+
+/***Writing design concepts***/
+
+.image-row2 {
+    flex: 1;
+    padding: 20px 14px;
+    display: flex;           /* makes children line up in a row */
+    gap: 10px;               /* space between images */
+    align-items: center;     /* optional: vertically align if images have different heights */
+  
+}
+
+.image-row2 img {
+    width: 450px;  /* change as needed */
+    height: auto;  /* maintain aspect ratio */
+    border-radius: 10px; /* optional rounded corners */
+    margin: 0;
+    padding: 0 10px;
+}
+
+/* Container */
+.AI {
+    position: relative;
+    overflow: hidden;
+}
+
+/* The label */
+.AI-label {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #f8d515;
+    font-size: 12px;
+    padding: 5px 8px;
+    border-radius: 6px;
+
+    opacity: 0;              /* hidden by default */
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+/* Show on hover */
+.AI:hover .AI-label {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.content {
+  display: none;
+  margin-top: 10px;
+  margin-bottom: 60px;
+}
+
+
+.content.active {
+  display: block;
+}
+
+.content img {
+  max-width: 100%;
+  width: auto;
+  display: block;
+}
+
+/*button 2*/
+.toggle-btn {
+    color: #eae6dd;
+    margin-top: 0px;
+    padding: 20px 100px;
+    gap: 10px;
+    background-color: rgba(24, 89, 76);
+    border: none;
+    border-radius: 999px; /* perfect pill */
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 15px;
+     
+    /* smooth animation */
+        transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hover effect */
+.toggle-btn:hover {
+    font-weight: bold;
+    transform: translateY(-8px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2); /* adds depth */
+    transform: scale(1.1);
+    background-color: rgb(40, 114, 99);
+    color: #eae6dd;
+}
+
+.button-group {
+  display: flex;
+  gap: 20px; /* controls space between buttons */
+  margin-bottom: 20px;
+  justify-content: center;
+}
