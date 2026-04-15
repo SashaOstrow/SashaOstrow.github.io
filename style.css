@@ -111,6 +111,15 @@ main {
     text-align: center;
 }
 
+.h3-extra {
+    color: #a8aba8;
+    font-family: 'Montserrat', sans-serif; 
+   margin-bottom: 30px;
+
+    font-size: 20px;
+    text-align: center;
+}
+
 .h4 {
     
     color: #f8d515;
